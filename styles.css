@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Metal+Mania');
+
+body {
+  text-align: center;
+  font-family: 'Metal Mania', cursive;
+  color: rgb(256, 256, 256);
+  background: url('acdc.jpg');
+}
+
+section {
+  width: 960px;
+  margin:0 auto;
+  background: rgba(0,0,0,0.85);
+}
+
+.jumbotron {
+  background: rgba(0,0,0,0);
+  display: flex;
+  justify-content: center;
+  margin:0;
+}
+
+.jumbotron h1, i {
+  margin: 10px;
+  background: rgba(0,0,0,0.5);
+  padding:0 15px;
+}
+
+p {
+  display: inline-block;
+  padding: 6px;
+  font-size: 40px;
+  text-transform: uppercase;
+  background: rgba(0,0,0,0.5);
+}
+
+.hangman {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+
+.heading {
+  letter-spacing: 5px;
+}
+
+.card {
+  width: 320px;
+  margin: auto;
+  height: 45px;
+  letter-spacing: 20px;
+  padding: 5px;
+  flex-direction: row;
+  background: #181818;
+  border: 2px dashed rgba(256, 256, 256, 0.8);
+}
+
+#lives {
+  margin: 0;
+  justify-content: space-around;
+}
+
+.card h2 {
+  letter-spacing: 10px;
+}
+
+h1, h4 {
+  letter-spacing: 2px;
+}
+
