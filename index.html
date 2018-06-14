@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
@@ -12,23 +12,29 @@
 <body>
   <section>
   <div class="jumbotron">
-    <i class="fas fa-bolt fa-4x"></i><h1> Hangman</h1>
+    <span id="acdc"><h1>AC</h1><i class="fas fa-bolt fa-4x"></i><h1>DC</h1></span>
+    <h1>Hangman</h1>
   </div>
-    <div id="letters"> 
-      
+    <div class id="outcome"></div>
+    <div class="middle">
+      <button id="reset">Reset</button>
+      <div id="letters"> </div>
+      <button id="hint">Hint</button>
     </div> 
-    <h4 id="heading">Already Picked:</h4>
-    <div class="card" id="wrong-letter">
-    
+    <div id="hintCard">
+      <p id="hintText"></p>
+      <button id='exit'>x</button>
     </div>
+    <h4 class="heading2">Incorrect:</h4>
+    <div class="card display" id="wrong-letter"></div>
     <div class="hangman">
       <canvas id="canvas" width=350 height=425></canvas>
-      <div class="card" id="lives"></div>
+      <div class="card display" id="lives"></div>
+    </div>
     </div>
   </section>    
 
-  
-  <!-- scripts -->
+<!-- scripts -->
   <script src="wordGame.js"></script>
 </body>
 </html>

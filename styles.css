@@ -11,63 +11,135 @@ body {
 section {
   width: 960px;
   margin:0 auto;
-  background: rgba(0,0,0,0.85);
+  background: rgba(0,0,0,0.9);
 }
 
 .jumbotron {
   background: rgba(0,0,0,0);
   display: flex;
   justify-content: center;
+  align-items: center;
   margin:0;
 }
 
 .jumbotron h1, i {
-  margin: 10px;
+  margin: 0 10px;
   background: rgba(0,0,0,0.5);
-  padding:0 15px;
 }
 
-p {
+#acdc {
+  color: orangered;
+  display: flex;
+  margin-top: 16px;
+}
+
+#letters p {
   display: inline-block;
-  padding: 6px;
-  font-size: 40px;
+  padding: 5px;
+  font-size: 32px;
+  letter-spacing: 3px;
   text-transform: uppercase;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0,0,0,0.7);
+}
+
+#letters {
+  width: 550px;
+}
+
+#outcome {
+  margin-bottom: 30px;
 }
 
 .hangman {
   display: flex;
   justify-content: center;
-  align-items: center;
   flex-wrap: wrap;
   margin-top: 40px;
 }
 
-.heading {
+.middle {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.middle button {
+  background: rgba(26, 44, 44, 0.8);
+  border-color:rgba(0, 0, 0, 0.5);
+  color:rgba(256, 256, 256, 0.8);
+  height: 50px;
+  width: 100px;
+  letter-spacing: 3px;
+  font-size: 20px;
+  margin: 30px;
+  transition: all .5s;
+}
+
+.middle button:hover {
+  background: rgb(10, 25, 25);
+  border-color:rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+.heading2 {
   letter-spacing: 5px;
 }
 
 .card {
-  width: 320px;
+  background: #181818;
+  border: 2px solid rgba(256, 256, 256, 0.1);
+  padding: 10px 15px;
+  letter-spacing: 2px;
+  font-size: 14px;
+}
+
+.display {
+  width: 400px;
   margin: auto;
   height: 45px;
   letter-spacing: 20px;
   padding: 5px;
   flex-direction: row;
-  background: #181818;
-  border: 2px dashed rgba(256, 256, 256, 0.8);
+}
+
+#hintCard {
+  width: 320px;
+  margin: 0 auto;
+  font-size: 20px;
+  letter-spacing: 3px;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 20px 20px 5px 20px;
+  position: relative;
+}
+
+#exit {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0);
+  border-color: rgba(0,0,0,0);
+  color: rgb(256, 256, 256);
+  cursor: pointer;
+  display: none;
+}
+
+#wrong-letter h4 {
+  letter-spacing: 20px;
+  padding: 5px;
 }
 
 #lives {
   margin: 0;
   justify-content: space-around;
+  width: 250px;
+  position: relative;
+  top: 110px;
 }
 
 .card h2 {
-  letter-spacing: 10px;
+  letter-spacing: 5px;
 }
 
 h1, h4 {
   letter-spacing: 2px;
 }
-

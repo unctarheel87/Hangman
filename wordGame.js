@@ -1,35 +1,40 @@
 //globals
 const songBank = {
   songs: [
-    {id: 0, song: 'Highway to Hell'},
-    {id: 1, song: 'Back in Black'},
-    {id: 2, song: 'Hells Bells'},
-    {id: 3, song: 'Shook Me All Night Long'},
-    {id: 4, song: 'Dirty Deeds Done Dirt Cheap'},
-    {id: 5, song: 'For Those About to Rock'},
-    {id: 6, song: 'Moneytalks'},
-    {id: 7, song: 'Shoot To Thrill'},
+    {id: 0, song: 'Highway to Hell', hint: 'first hit song'},
+    {id: 1, song: 'Back in Black', hint: 'Album Title Track'},
+    {id: 2, song: 'Hells Bells', hint: 'a slow building intro'},
+    {id: 3, song: 'Shook Me All Night Long', hint: 'first pop hit'},
+    {id: 4, song: 'Dirty Deeds Done Dirt Cheap', hint: 'recent single'},
+    {id: 5, song: 'For Those About to Rock', hint: 'famous title'},
+    {id: 6, song: 'Moneytalks', hint: 'recent single'},
+    {id: 7, song: 'Shoot To Thrill', hint: 'single off Back in Black'},
   ]
 }
 
 const canvas = document.getElementById('canvas')
 const ctx = canvas.getContext("2d")
-const songPick = songBank.song[1].toLowerCase();
-const songPickArr = songPick.split('');
-let correctResponses = []
-let wrongLetter = []
+
+//get random index
+let randIndex = Math.floor(Math.random() * songBank.songs.length)
+
+let songPick = songBank.songs[randIndex].song.toLowerCase();
+let songHint = songBank.songs[randIndex].hint;
+let songPickArr = songPick.split('');
+let correctResponses = [ ]
+let wrongLetter = [ ]
 let lives = 10
-let alreadyPressed = []
-let keyName = []
+let alreadyPressed = [ ]
+let keyName = [ ]
 
 for(let i = 0; i < songPickArr.length; i++) {
   songPickArr[i] === ' ' ? correctResponses.push(' ') : correctResponses.push('_')
 }
 
 //pre-event HTML
-document.getElementById('letters').innerHTML = correctResponses.map((letter) => {
-  return "<p>" + letter + "</p>"
-  }).join('');
+document.getElementById('letters').innerHTML = correctResponses.map((letter, index) => {
+                                                    return "<p>" + letter + "</p>"
+                                                  }).join('');
 document.getElementById('lives').innerHTML = "<h2>Lives: " + lives + "</h2>";
 
 //pre-event Canvas
@@ -40,6 +45,63 @@ ctx.strokeStyle = '#fff';
 ctx.lineCap = 'round';
 ctx.lineTo(180,310);
 ctx.stroke();
+
+//hint listeners
+const hint = document.getElementById('hint');
+const exit = document.getElementById('exit');
+
+hint.addEventListener('click', function(e) {
+  e.preventDefault();
+  document.getElementById('exit').style = "display: block;";
+  document.getElementById('hintText').innerHTML = songHint;
+});
+
+exit.addEventListener('click', function(e) {
+  e.preventDefault();
+  document.getElementById('hintText').innerHTML = '';
+  document.getElementById('exit').style = "display: none;";
+});
+
+//reset listener
+const reset = document.getElementById('reset');
+
+reset.addEventListener('click', function(e) {
+  e.preventDefault();
+  //pick song 
+  randIndex = Math.floor(Math.random() * songBank.songs.length)
+  songPick = songBank.songs[randIndex].song.toLowerCase();
+  songHint = songBank.songs[randIndex].hint;
+  songPickArr = songPick.split('');
+  //clear data
+  correctResponses = [ ]
+  for(let i = 0; i < songPickArr.length; i++) {
+    songPickArr[i] === ' ' ? correctResponses.push(' ') : correctResponses.push('_')
+  }
+  wrongLetter = [ ]
+  alreadyPressed = [ ]
+  lives = 10
+  //clear DOM
+  document.getElementById('letters').innerHTML = correctResponses.map((letter, index) => {
+                                                  return "<p>" + letter + "</p>"
+                                                }).join('');
+  document.getElementById('lives').innerHTML = "<h2>Lives: " + lives + "</h2>";
+  document.getElementById('wrong-letter').innerHTML = wrongLetter.map((letter) => {
+                                                        return "<h4>" + letter + "</h4>"
+                                                      }).join('');
+  document.getElementById('hintText').innerHTML = ' '
+  document.getElementById('outcome').innerHTML = ' '
+  document.getElementById('exit').style = "display: none"                                                   
+  
+  //clear Canvas
+  ctx.clearRect(0, 0, 350, 425)
+  ctx.beginPath();
+  ctx.moveTo(10,310);
+  ctx.lineWidth = 4;
+  ctx.strokeStyle = '#fff';
+  ctx.lineCap = 'round';
+  ctx.lineTo(180,310);
+  ctx.stroke();
+  });
 
 //keypress event listener
 document.addEventListener('keypress', function(e) {
@@ -61,9 +123,12 @@ document.addEventListener('keypress', function(e) {
   }
 
   if(songPickArr.join() === correctResponses.join()) {
-    alert("You win!")
-  } else if(wrongLetter.length === 9) {
-    alert("You Lose")
+    document.getElementById('outcome').innerHTML = "<h1>You Win!!</h1>";
+    document.getElementById('outcome').style = "color: lightgreen"
+  } else if(lives == 0
+  ) {
+    document.getElementById('outcome').innerHTML = "<h1>You Lose...try again!</h1>";
+    document.getElementById('outcome').style = "color: tomato"
   }
 
 document.getElementById('letters').innerHTML = correctResponses.map((letter) => {
@@ -71,7 +136,7 @@ document.getElementById('letters').innerHTML = correctResponses.map((letter) => 
                                                 }).join('');
 document.getElementById('lives').innerHTML = "<h2>Lives: " + lives + "</h2>";
 document.getElementById('wrong-letter').innerHTML = wrongLetter.map((letter) => {
-                                                    return "<h3>" + letter + "</h3>"
+                                                    return "<h4>" + letter + "</h4>"
                                                     }).join('');
 
 //Canvas  
@@ -151,9 +216,9 @@ function animateLineDraw(vertices) {
     const dx = pt2.x - pt1.x;
     const dy = pt2.y - pt1.y; 
     //create individual waypoints
-      for(let n = 0; n < 100; n++) {
-        const x = pt1.x + dx * n/100;
-        const y = pt1.y + dy * n/100;
+      for(let n = 0; n < 50; n++) {
+        const x = pt1.x + dx * n/50;
+        const y = pt1.y + dy * n/50;
         wayPoints.push({x:x, y:y})
       }
     }
@@ -183,8 +248,8 @@ function animateDrawArc(radians, x, y, r) {
     const rd1 = radians[i];
     const dr = rd1.r1 - rd0.r0;
     //create individual waypoints
-      for(let n = 0; n < 100; n++) {
-        const r = rd0.r0 + dr * n/100;
+      for(let n = 0; n < 50; n++) {
+        const r = rd0.r0 + dr * n/50;
         wayPoints.push({rd:r})
       }
     }
