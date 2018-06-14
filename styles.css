@@ -36,6 +36,7 @@ section {
 #letters p {
   display: inline-block;
   padding: 5px;
+  margin-top: 10px;
   font-size: 32px;
   letter-spacing: 4px;
   text-transform: uppercase;
@@ -47,7 +48,7 @@ section {
 }
 
 #outcome {
-  margin-bottom: 30px;
+  margin-top: 30px;
 }
 
 .hangman {

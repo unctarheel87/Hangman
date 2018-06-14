@@ -1,14 +1,14 @@
 //globals
 const songBank = {
   songs: [
-    {id: 0, song: 'Highway to Hell', hint: 'first hit song'},
-    {id: 1, song: 'Back in Black', hint: 'Album Title Track'},
-    {id: 2, song: 'Hells Bells', hint: 'a slow building intro'},
-    {id: 3, song: 'Shook Me All Night Long', hint: 'first pop hit'},
-    {id: 4, song: 'Dirty Deeds Done Dirt Cheap', hint: 'recent single'},
-    {id: 5, song: 'For Those About to Rock', hint: 'famous title'},
+    {id: 0, song: 'Highway-to-Hell', hint: 'first hit song'},
+    {id: 1, song: 'Back-in-Black', hint: 'Album Title Track'},
+    {id: 2, song: 'Hells-Bells', hint: 'a slow building intro'},
+    {id: 3, song: 'Shook-Me-All-Night-Long', hint: 'first pop hit'},
+    {id: 4, song: 'Dirty-Deeds-Done-Dirt-Cheap', hint: 'recent single'},
+    {id: 5, song: 'For-Those-About-to-Rock', hint: 'famous title'},
     {id: 6, song: 'Moneytalks', hint: 'recent single'},
-    {id: 7, song: 'Shoot To Thrill', hint: 'single off Back in Black'},
+    {id: 7, song: 'Shoot-To-Thrill', hint: 'single off Back in Black'},
   ]
 }
 
@@ -31,7 +31,7 @@ let keyName = [ ]
 const playSong = new Audio('acdc.mp3')
 
 for(let i = 0; i < songPickArr.length; i++) {
-  songPickArr[i] === ' ' ? correctResponses.push(' ') : correctResponses.push('_')
+  songPickArr[i] === '-' ? correctResponses.push('-') : correctResponses.push('_')
 }
 
 //pre-event HTML
@@ -78,7 +78,7 @@ reset.addEventListener('click', function(e) {
   //clear data
   correctResponses = [ ]
   for(let i = 0; i < songPickArr.length; i++) {
-    songPickArr[i] === ' ' ? correctResponses.push(' ') : correctResponses.push('_')
+    songPickArr[i] === '-' ? correctResponses.push('-') : correctResponses.push('_')
   }
   wrongLetter = [ ]
   alreadyPressed = [ ]
