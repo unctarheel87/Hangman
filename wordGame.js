@@ -31,7 +31,7 @@ let keyName = [ ]
 const playSong = new Audio('acdc.mp3')
 
 for(let i = 0; i < songPickArr.length; i++) {
-  songPickArr[i] === ' ' ? correctResponses.push('-') : correctResponses.push('_')
+  songPickArr[i] === ' ' ? correctResponses.push(' ') : correctResponses.push('_')
 }
 
 //pre-event HTML
@@ -78,7 +78,7 @@ reset.addEventListener('click', function(e) {
   //clear data
   correctResponses = [ ]
   for(let i = 0; i < songPickArr.length; i++) {
-    songPickArr[i] === ' ' ? correctResponses.push('-') : correctResponses.push('_')
+    songPickArr[i] === ' ' ? correctResponses.push(' ') : correctResponses.push('_')
   }
   wrongLetter = [ ]
   alreadyPressed = [ ]
