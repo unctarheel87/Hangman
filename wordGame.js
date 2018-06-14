@@ -132,7 +132,7 @@ document.addEventListener('keypress', function(e) {
     document.getElementById('outcome').style = "color: lightgreen"
     playSong.play();
   } else if(lives == 0) {
-    document.getElementById('outcome').innerHTML = "<h1>You Lose...try again!</h1>";
+    document.getElementById('outcome').innerHTML = "<h2>You Lose...try again! Song name was: " + songBank.songs[randIndex].song + "</h2>";
     document.getElementById('outcome').style = "color: tomato"
   }
 
