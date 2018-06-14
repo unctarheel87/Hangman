@@ -67,7 +67,6 @@ exit.addEventListener('click', function(e) {
 
 //reset listener
 const reset = document.getElementById('reset');
-
 reset.addEventListener('click', function(e) {
   e.preventDefault();
   //pick song 
@@ -122,7 +121,7 @@ document.addEventListener('keypress', function(e) {
       correctResponses.splice(duplicates[i], 1, keyName);
   }
 
-  if(songPickArr.indexOf(keyName) === -1 && wrongLetter.includes(keyName) == false) {
+  if(songPickArr.indexOf(keyName) === -1 && wrongLetter.includes(keyName) == false && lives > 0) {
     wrongLetter.push(keyName)
     lives--
   }
