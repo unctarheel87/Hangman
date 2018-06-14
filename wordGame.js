@@ -23,7 +23,7 @@ let songHint = songBank.songs[randIndex].hint;
 let songPickArr = songPick.split('');
 let correctResponses = [ ]
 let wrongLetter = [ ]
-let lives = 10
+let lives = 9
 let alreadyPressed = [ ]
 let keyName = [ ]
 
@@ -79,7 +79,7 @@ reset.addEventListener('click', function(e) {
   }
   wrongLetter = [ ]
   alreadyPressed = [ ]
-  lives = 10
+  lives = 9
   //clear DOM
   document.getElementById('letters').innerHTML = correctResponses.map((letter, index) => {
                                                   return "<p>" + letter + "</p>"
@@ -101,7 +101,7 @@ reset.addEventListener('click', function(e) {
   ctx.lineCap = 'round';
   ctx.lineTo(180,310);
   ctx.stroke();
-  });
+});
 
 //keypress event listener
 document.addEventListener('keypress', function(e) {
@@ -162,45 +162,45 @@ const vertices = [
   ]
 
   //animation logic for Hangman Draw
-  if(lives == 9) {
+  if(lives == 8) {
     animateLineDraw(vertices.filter((point, index) => {
       return index < 2;
     }))
   }
-  else if(lives == 8) {
+  else if(lives == 7) {
     animateLineDraw(vertices.filter((point, index) => {
       return index < 3 && index > 0;
     }))
   }
-  else if(lives == 7) {
+  else if(lives == 6) {
     animateLineDraw(vertices.filter((point, index) => {
       return index < 4 && index > 1;
     }))
   }
-  else if(lives == 6 && alreadyPressed.includes(keyName) == false) {
+  else if(lives == 5 && alreadyPressed.includes(keyName) == false) {
     animateDrawArc(radians,182,140,25, true)
   }
-  else if(lives == 5) {
+  else if(lives == 4) {
     animateLineDraw(vertices.filter((point, index) => {
       return index < 6 && index > 3;
     }))
   }
-  else if(lives == 4) {
+  else if(lives == 3) {
     animateLineDraw(vertices.filter((point, index) => {
       return index < 7 && index > 4;
     }))
   }
-  else if(lives == 3) {
+  else if(lives == 2) {
     animateLineDraw(vertices.filter((point, index) => {
       return index < 9 && index > 6;
     }))
   }
-  else if(lives == 2) {
+  else if(lives == 1) {
     animateLineDraw(vertices.filter((point, index) => {
       return index < 11 && index > 8;
     }))
   }
-  else if(lives == 1) {
+  else if(lives == 0) {
     animateLineDraw(vertices.filter((point, index) => {
       return index < 13 && index > 10;
     }))

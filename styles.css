@@ -37,7 +37,7 @@ section {
   display: inline-block;
   padding: 5px;
   font-size: 32px;
-  letter-spacing: 3px;
+  letter-spacing: 4px;
   text-transform: uppercase;
   background: rgba(0,0,0,0.7);
 }
@@ -104,7 +104,7 @@ section {
 
 #hintCard {
   width: 320px;
-  margin: 0 auto;
+  margin: 10px; auto;
   font-size: 20px;
   letter-spacing: 3px;
   background: rgba(0, 0, 0, 0.5);
@@ -137,7 +137,7 @@ section {
 }
 
 .card h2 {
-  letter-spacing: 5px;
+  letter-spacing: 10px;
 }
 
 h1, h4 {
