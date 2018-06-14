@@ -35,7 +35,7 @@ for(let i = 0; i < songPickArr.length; i++) {
 }
 
 //pre-event HTML
-document.getElementById('letters').innerHTML = correctResponses.map((letter, index) => {
+document.getElementById('letters').innerHTML = correctResponses.map((letter) => {
                                                     return "<p>" + letter + "</p>"
                                                   }).join('');
 document.getElementById('lives').innerHTML = "<h2>Lives: " + lives + "</h2>";
@@ -84,7 +84,7 @@ reset.addEventListener('click', function(e) {
   alreadyPressed = [ ]
   lives = 9
   //clear DOM
-  document.getElementById('letters').innerHTML = correctResponses.map((letter, index) => {
+  document.getElementById('letters').innerHTML = correctResponses.map((letter) => {
                                                   return "<p>" + letter + "</p>"
                                                 }).join('');
   document.getElementById('lives').innerHTML = "<h2>Lives: " + lives + "</h2>";
