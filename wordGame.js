@@ -21,7 +21,6 @@ let randIndex = Math.floor(Math.random() * songBank.songs.length)
 let songPick = songBank.songs[randIndex].song.toLowerCase();
 let songHint = songBank.songs[randIndex].hint;
 let songPickArr = songPick.split('');
-let correctResponses = [ ]
 let wrongLetter = [ ]
 let lives = 9
 let alreadyPressed = [ ]
@@ -30,9 +29,16 @@ let keyName = [ ]
 //audio
 const playSong = new Audio('acdc.mp3')
 
-for(let i = 0; i < songPickArr.length; i++) {
-  songPickArr[i] === '-' ? correctResponses.push('-') : correctResponses.push('_')
+//create correct letter array
+const createUnderscores = () => {
+  let correctResponses = [ ]
+  for(let i = 0; i < songPickArr.length; i++) {
+    songPickArr[i] === '-' ? correctResponses.push('-') : correctResponses.push('_')
+  }
+  return correctResponses;
 }
+
+correctResponses = createUnderscores()
 
 //pre-event HTML
 document.getElementById('letters').innerHTML = correctResponses.map((letter) => {
@@ -75,10 +81,7 @@ reset.addEventListener('click', function(e) {
   songHint = songBank.songs[randIndex].hint;
   songPickArr = songPick.split('');
   //clear data
-  correctResponses = [ ]
-  for(let i = 0; i < songPickArr.length; i++) {
-    songPickArr[i] === '-' ? correctResponses.push('-') : correctResponses.push('_')
-  }
+  correctResponses = createUnderscores()
   wrongLetter = [ ]
   alreadyPressed = [ ]
   lives = 9
